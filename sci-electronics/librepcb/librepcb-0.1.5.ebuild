@@ -35,7 +35,7 @@ DEPEND="${RDEPEND}"
 
 src_configure() {
 	local pro_lst
-	for pro_lst in $(find libs/librepcb/ -type f -name "*.pro" )
+	for pro_lst in $(find libs/librepcb/ -type f -name "*.pro" || die)
 	do
 		sed -e 's:target.path = $${PREFIX}/lib:target.path = $${PREFIX}/'$(get_libdir)':' -i ${pro_lst} || die "Can't replace target.path"
 	done
